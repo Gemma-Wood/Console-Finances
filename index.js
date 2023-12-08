@@ -1,4 +1,4 @@
-var finances = [
+let finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -86,3 +86,35 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// let array2D = [[1, 2, 3], [4, 5, 6]];
+
+// array2D[0]; This would result in [1, 2, 3]
+
+// let array2D = [[1, 2, [7, 8, 9]], [4, 5, 6]]
+
+// array2D[0] This would result in [1,2,[7,8,9,]]
+// array2D[0][0]; This would result in 1   
+// array2D [0][2]; This would result in [7,8,9]
+// array2D [0][2][0]; This would result in 7
+
+// let finances = [
+//   ['Jan-2010', 867884],
+//   ['Feb-2010', 984655],
+//   ['Mar-2010', 322013],
+//   ['Apr-2010', -69417],
+//   ['May-2010', 310503],];
+
+  // for (let i = 0; i < finances.length; i++) {
+  //   console.log(finances[i][1]);
+  // }
+
+  // // for a loop within another loop/
+  // for(let i = 0; i < finances.length; i++){
+  //   // inner loop/
+  //   for (let j = 0; j < finances[i].length; j++){}
+  // }
+
+  //????////
+
+  
