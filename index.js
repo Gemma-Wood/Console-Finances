@@ -118,3 +118,73 @@ let finances = [
   //????////
 
   
+
+  // Work out the total number of months by working out the total number of entries //
+
+  let financesLength = finances.length
+  console.log (`Total months:${financesLength}`)
+
+  // Work out net total by accessing the second item in the nest array and create a loop//
+
+  let sum = 0;
+
+  for (let i = 0; i < finances.length; i++) {
+    sum += finances [i][1];
+    // console.log(`${finances[i][1]}`)  
+  }
+
+  console.log(`Total:${sum}`)
+
+  // Find the finances array
+  // Now find the second item for each item within the nested array
+  // Store this number
+  // Add it to the nest number
+  // Continue until the end of the loop
+
+  // Average the changes and create a new array containing the changes from month to month
+
+  let differences =[]
+
+  // for (let index = 0; index < array.length; index++) {
+  //   const element = array[index];
+    
+  // }
+
+  console.log(`${finances [1][1]} - ${finances[0][1]}`)
+  console.log(`finances[1][1] - finances [0][1]`)
+
+  let monthResult =[]
+
+  let maxProfit=0
+  let minProfit=0
+  let bestMonth=""
+  let worstMonth=""
+
+  for (let i = 0; i < finances.length-1; i++) {
+   let profitMonths= finances [i+1][1] - finances[i][1]
+   monthResult.push(profitMonths)
+    // console.log(`${finances [i+1][1]} - ${finances[i][1]} = ${profitMonths}`)
+    if(maxProfit<profitMonths){
+      maxProfit=profitMonths
+      bestMonth=finances[i+1][0]
+    } 
+if(minProfit>profitMonths){
+  minProfit=profitMonths
+  worstMonth=finances[i+1][0]
+}
+  }
+console.log(maxProfit)
+console.log(minProfit)
+console.log(bestMonth)
+console.log(worstMonth)
+
+let outcome=0
+
+for (let i = 0; i < monthResult.length; i++) {
+  outcome += monthResult[i];
+ 
+}
+let averageOutcome=(outcome/85).toFixed(2)
+console.log(averageOutcome)
+
+// create a loop to find average increase and average descrease in profit according to month and #
