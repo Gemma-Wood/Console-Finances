@@ -90,7 +90,7 @@ var finances = [
   
   // JavaScript code that analyzes the records to calculate each of the following:
   
-  //Initialize the variables
+  // Initialize the variables
   // * The total number of months included in the dataset. --> see final console.log
   // * The net total amount of Profit/Losses over the entire period.
   var totalAmount = 0;
