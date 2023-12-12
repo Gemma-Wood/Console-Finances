@@ -1,4 +1,5 @@
-let finances = [
+// Financial record provided
+var finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -84,107 +85,80 @@ let finances = [
   ['Nov-2016', 795914],
   ['Dec-2016', 60988],
   ['Jan-2017', 138230],
-  ['Feb-2017', 671099],
-];
-
-// let array2D = [[1, 2, 3], [4, 5, 6]];
-
-// array2D[0]; This would result in [1, 2, 3]
-
-// let array2D = [[1, 2, [7, 8, 9]], [4, 5, 6]]
-
-// array2D[0] This would result in [1,2,[7,8,9,]]
-// array2D[0][0]; This would result in 1   
-// array2D [0][2]; This would result in [7,8,9]
-// array2D [0][2][0]; This would result in 7
-
-// let finances = [
-//   ['Jan-2010', 867884],
-//   ['Feb-2010', 984655],
-//   ['Mar-2010', 322013],
-//   ['Apr-2010', -69417],
-//   ['May-2010', 310503],];
-
-  // for (let i = 0; i < finances.length; i++) {
-  //   console.log(finances[i][1]);
-  // }
-
-  // // for a loop within another loop/
-  // for(let i = 0; i < finances.length; i++){
-  //   // inner loop/
-  //   for (let j = 0; j < finances[i].length; j++){}
-  // }
-
-  //????////
-
+  ['Feb-2017', 671099]
+  ];
   
-
-  // Work out the total number of months by working out the total number of entries //
-
-  let financesLength = finances.length
-  console.log (`Total months:${financesLength}`)
-
-  // Work out net total by accessing the second item in the nest array and create a loop//
-
-  let sum = 0;
-
-  for (let i = 0; i < finances.length; i++) {
-    sum += finances [i][1];
-    // console.log(`${finances[i][1]}`)  
+  // JavaScript code that analyzes the records to calculate each of the following:
+  
+  //Initialize the variables
+  // * The total number of months included in the dataset. --> see final console.log
+  // * The net total amount of Profit/Losses over the entire period.
+  var totalAmount = 0;
+  
+  // * The average of the **changes** in Profit/Losses over the entire period.
+  //   * You will need to track what the total change in profits are from month to month and then find the average.
+  //   * (`Total/Number of months`)
+  var changeSum = 0;
+  
+  // Variables to compare past value to current value
+  var pastMonth = "";
+  var pastValue = 0;
+  var currentMonth = "";
+  var currentValue = 0;
+  
+  // * The greatest increase in profits (date and amount) over the entire period.
+  var greatestIncreaseMonth = "";
+  var greatestIncreaseValue = 0;
+  
+  // * The greatest decrease in losses (date and amount) over the entire period.
+  var greatestDecreaseMonth = "";
+  var greatestDecreaseValue = 0;
+  
+  
+  // Read through the records in the array
+  for (var i = 0; i < finances.length; i++) {
+  
+      var financesPair = finances[i];
+      currentMonth = financesPair[0];
+      currentValue = financesPair[1];
+  
+      // Increment total amount with new value
+      totalAmount = totalAmount + currentValue;
+  
+      // Fix the first reading of the loop
+      if (i === 0) {
+            pastValue = currentValue;
+      }
+  
+      // Increment changeSum with the difference between the values
+      changeSum = changeSum + (currentValue - pastValue);
+  
+      // Check to see if the difference between the current and the past value is greater than the greatest increase
+      if (currentValue > pastValue && // means it is an increase
+          currentValue - pastValue > greatestIncreaseValue){ // compare with greatest increase
+          greatestIncreaseMonth = currentMonth;
+          greatestIncreaseValue = currentValue - pastValue ;
+      }
+  
+      // Check if the difference between the current and the past value is greater than the greatest decrease
+          if (currentValue < pastValue && // means it is a decrease
+          currentValue - pastValue < greatestDecreaseValue){ // compare with greatest decrease
+          greatestDecreaseMonth = currentMonth;
+          greatestDecreaseValue = currentValue - pastValue ;
+      }
+  
+      // Update the comparison variables
+      pastMonth = currentMonth;
+      pastValue = currentValue;
+  
   }
-
-  console.log(`Total:${sum}`)
-
-  // Find the finances array
-  // Now find the second item for each item within the nested array
-  // Store this number
-  // Add it to the nest number
-  // Continue until the end of the loop
-
-  // Average the changes and create a new array containing the changes from month to month
-
-  let differences =[]
-
-  // for (let index = 0; index < array.length; index++) {
-  //   const element = array[index];
-    
-  // }
-
-  console.log(`${finances [1][1]} - ${finances[0][1]}`)
-  console.log(`finances[1][1] - finances [0][1]`)
-
-  let monthResult =[]
-
-  let maxProfit=0
-  let minProfit=0
-  let bestMonth=""
-  let worstMonth=""
-
-  for (let i = 0; i < finances.length-1; i++) {
-   let profitMonths= finances [i+1][1] - finances[i][1]
-   monthResult.push(profitMonths)
-    // console.log(`${finances [i+1][1]} - ${finances[i][1]} = ${profitMonths}`)
-    if(maxProfit<profitMonths){
-      maxProfit=profitMonths
-      bestMonth=finances[i+1][0]
-    } 
-if(minProfit>profitMonths){
-  minProfit=profitMonths
-  worstMonth=finances[i+1][0]
-}
-  }
-console.log(maxProfit)
-console.log(minProfit)
-console.log(bestMonth)
-console.log(worstMonth)
-
-let outcome=0
-
-for (let i = 0; i < monthResult.length; i++) {
-  outcome += monthResult[i];
- 
-}
-let averageOutcome=(outcome/85).toFixed(2)
-console.log(averageOutcome)
-
-// create a loop to find average increase and average descrease in profit according to month and #
+  
+  console.log(
+    "Financial Analysis\n----------------------------" + 
+    "\nTotal Months: " + finances.length +
+    "\nTotal: $" + totalAmount +
+    "\nAverage Change: $" + (changeSum/finances.length).toFixed(2) + //('Total/Number of months')
+    "\nGreatest Increase in Profits: " + greatestIncreaseMonth + " ($" + greatestIncreaseValue + ")" +
+    "\nGreatest Decrease in Profits: " + greatestDecreaseMonth + " ($" + greatestDecreaseValue + ")"
+  );
+  
