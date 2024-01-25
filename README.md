@@ -1,7 +1,5 @@
 # Console Finances
 
-<p align="center"> <img width="556" alt="Screenshot 2024-01-25 at 12 37 49" src="https://github.com/Gemma-Wood/Console-Finances/assets/150028191/7d0b2e76-0158-4a88-995b-e15cd8b3a74e">
-
 The application analyses the financial records of a company. A dataset had been provided, and the application analyses the records to calculate the total number of months included in the dataset, the net total amount of Profit/Losses over the entire period and the average of the changes in Profit/Losses over the entire period.
 
 ## Your Task
